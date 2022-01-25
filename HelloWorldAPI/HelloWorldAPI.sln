@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\.github\workflows\main.yml = ..\.github\workflows\main.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B7A26859-3BAF-495F-8383-E9FED0CCF52B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSample.UnitTests", "..\TestSample.UnitTests\TestSample.UnitTests.csproj", "{064C0622-8780-46E3-A7A3-C075F8751623}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +24,16 @@ Global
 		{3BF84FE9-2F7A-4D8F-9DAF-ECB7E7A82927}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BF84FE9-2F7A-4D8F-9DAF-ECB7E7A82927}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BF84FE9-2F7A-4D8F-9DAF-ECB7E7A82927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{064C0622-8780-46E3-A7A3-C075F8751623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{064C0622-8780-46E3-A7A3-C075F8751623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{064C0622-8780-46E3-A7A3-C075F8751623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{064C0622-8780-46E3-A7A3-C075F8751623}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{064C0622-8780-46E3-A7A3-C075F8751623} = {B7A26859-3BAF-495F-8383-E9FED0CCF52B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A77D71F5-11AE-4EAC-861A-B1DE75C32039}
