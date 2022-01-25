@@ -50,7 +50,7 @@ jobs:
         run: dotnet test **/*.UnitTests.csproj --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
 
       - name: Copy Coverage To Predictable Location
-        run: cp /home/runner/work/Github-Action-RnD/Github-Action-RnD/TestSample.UnitTests/TestResults/25944aba-14e7-43b1-9c00-74aaeff24313/coverage.cobertura.xml coverage/coverage.cobertura.xml
+        run: cp /home/runner/work/Github-Action-RnD/Github-Action-RnD/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml coverage/coverage.cobertura.xml
 
       - name: Publish
         run: dotnet publish HelloWorldAPI/HelloWorldAPI.csproj -c Release -o web
