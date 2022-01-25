@@ -34,7 +34,7 @@ jobs:
         run: dotnet restore **/HelloWorldAPI.sln
 
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build **/HelloWorldAPI.sln --no-restore
 
       - name: Test
         run: dotnet test --no-build --verbosity normal
