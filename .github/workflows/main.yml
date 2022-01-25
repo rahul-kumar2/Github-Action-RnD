@@ -40,7 +40,7 @@ jobs:
         run: dotnet test **/*.UnitTests.csproj --no-build --verbosity normal
 
       - name: Publish
-        run: dotnet publish **/HelloWorldAPI.csproj -c Release  webapp
+        run: dotnet publish HelloWorldAPI.csproj -c Release  webapp
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.3.1
