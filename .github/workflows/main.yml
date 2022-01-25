@@ -49,9 +49,14 @@ jobs:
       - name: Test
         run: dotnet test **/*.UnitTests.csproj --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
 
+
+    
+
       - name: Copy Coverage To Predictable Location
         run: cp /home/runner/work/Github-Action-RnD/Github-Action-RnD/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml ${RUNNER_TEMP}/coverage.cobertura.xml
 
+      - name: Print directory structure
+        uses: ${RUNNER_TEMP}
 
       - name: Code Coverage Summary Report
         uses: irongut/CodeCoverageSummary@v1.0.2
