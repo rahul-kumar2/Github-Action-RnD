@@ -40,4 +40,4 @@ jobs:
         run: dotnet test **/*.UnitTests.csproj --no-build --verbosity normal
 
       - name: Publish
-        run: dotnet publish **/HelloWorldAPI.csproj -c Release -o website
+        run: dotnet publish **/HelloWorldAPI/HelloWorldAPI.csproj -c Release -o website
