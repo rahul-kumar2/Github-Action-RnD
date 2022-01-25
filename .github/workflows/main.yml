@@ -37,7 +37,8 @@ jobs:
         run: dotnet build **/HelloWorldAPI.sln --no-restore
 
       - name: Test
-        run: dotnet test **/*.UnitTests.csproj --no-build --verbosity normal
+        run: dotnet test **/*.UnitTests.csproj --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
+
 
       - name: Publish
         run: dotnet publish HelloWorldAPI/HelloWorldAPI.csproj -c Release -o web
