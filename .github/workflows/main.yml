@@ -31,7 +31,7 @@ jobs:
           dotnet-version: 6.0.x
           
       - name: Restore dependencies
-        run: dotnet restore 'HelloWorldAPI.sln'
+        run: dotnet restore HelloWorldAPI.sln
 
       - name: Build
         run: dotnet build --no-restore
