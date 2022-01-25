@@ -40,13 +40,13 @@ jobs:
         run: dotnet test **/*.UnitTests.csproj --no-build --verbosity normal
 
       - name: Publish
-        run: dotnet publish HelloWorldAPI.csproj -c Release  webapp
+        run: dotnet publish HelloWorldAPI.csproj -c Release -o web
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2.3.1
         with:
           # Artifact name
-          name: helloWorldAPIartf
+          name: web
           # A file, directory or wildcard pattern that describes what to upload
-          path: HelloWorldAPI/webapp/**
+          path: HelloWorldAPI/web/**
           if-no-files-found: error 
