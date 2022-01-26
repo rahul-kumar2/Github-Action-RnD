@@ -61,13 +61,13 @@ jobs:
 
  
 
-      #- name: Code Coverage Summary Report
-      #  uses: irongut/CodeCoverageSummary@v1.0.2
-      #  with:
-      #    filename: /home/runner/work/Github-Action-RnD/Github-Action-RnD/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml
-      #    badge: true
-      #    format: 'markdown'
-      #    output: 'both'
+      - name: Code Coverage Summary Report
+        uses: irongut/CodeCoverageSummary@v1.0.2
+        with:
+          filename: ${{runner.temp}}/coverage.cobertura.xml
+          badge: true
+          format: 'markdown'
+          output: 'both'
      
       - name: Publish
         run: dotnet publish HelloWorldAPI/HelloWorldAPI.csproj -c Release -o web
