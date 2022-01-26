@@ -33,7 +33,7 @@ jobs:
            echo "${{ github.workspace }}" + "\HelloWorldAPI\HelloWorldAPI.sln"
            echo "${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln"
            echo  ${ github.workspace }/HelloWorldAPI/HelloWorldAPI.sln
-           echo  ${{RUNNER_TEMP}}
+           echo  ${{runner.temp}}
 
 
       - name: Setup .NET
