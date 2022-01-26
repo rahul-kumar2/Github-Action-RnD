@@ -32,7 +32,7 @@ jobs:
            echo "github.workspace"
            echo "${{ github.workspace }}" + "\HelloWorldAPI\HelloWorldAPI.sln"
            echo "${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln"
-           echo  ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln
+           echo  ${ github.workspace }/HelloWorldAPI/HelloWorldAPI.sln
 
 
 
@@ -43,7 +43,7 @@ jobs:
           
       - name: Restore dependencies
         #run: dotnet restore **/HelloWorldAPI.sln
-        run: dotnet restore ${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln
+        run: dotnet restore ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln
 
       - name: Build
         #run: dotnet build **/HelloWorldAPI.sln --no-restore
@@ -51,7 +51,7 @@ jobs:
 
       - name: Test
         #run: dotnet test **/*.UnitTests.csproj --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
-        run: dotnet test ${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
+        run: dotnet test ${ github.workspace }\HelloWorldAPI\HelloWorldAPI.sln --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
 
 
     
