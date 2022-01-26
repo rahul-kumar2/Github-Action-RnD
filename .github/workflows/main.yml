@@ -55,7 +55,7 @@ jobs:
     
 
       - name: Copy Coverage To Predictable Location
-        run: cp ${{ github.workspace }}/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml ${{runner.temp}}/coverage.cobertura.xml
+        run: cp ${{ github.workspace }}/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml ${{runner.temp}}/data/scoverage.cobertura.xml
         #run: cp ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln ${{runner.temp}}/ 
 
  
