@@ -55,8 +55,7 @@ jobs:
       - name: Copy Coverage To Predictable Location
         run: cp /home/runner/work/Github-Action-RnD/Github-Action-RnD/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml ${RUNNER_TEMP}/coverage.cobertura.xml
 
-      - name: Print directory structure
-        uses: FiorelaCiroku/XDTesting-Print-Directory-Structure@v1.0.0
+ 
 
       - name: Code Coverage Summary Report
         uses: irongut/CodeCoverageSummary@v1.0.2
