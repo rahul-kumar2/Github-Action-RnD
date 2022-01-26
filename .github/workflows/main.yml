@@ -32,7 +32,7 @@ jobs:
            echo "github.workspace"
            echo "${{ github.workspace }}" + "\HelloWorldAPI\HelloWorldAPI.sln"
            echo "${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln"
-           echo  ${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln
+           echo  ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln
 
 
 
