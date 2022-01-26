@@ -32,7 +32,7 @@ jobs:
             #echo "GITHUB_ACTIONS: ${GITHUB_EVENT_PATH}"
             #echo "GITHUB_ACTIONS: ${GITHUB_PATH}"
             #echo "GITHUB_ACTIONS: ${GITHUB_WORKFLOW}"
-            echo "GITHUB_ACTIONS: ${RUNNER_TEMP}"
+            echo "${GITHUB_WORKSPACE}"
             #echo "GITHUB_ACTIONS: ${RUNNER_TOOL_CACHE}"
 
       - name: Setup .NET
