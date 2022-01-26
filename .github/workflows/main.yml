@@ -57,7 +57,7 @@ jobs:
     
 
       - name: Copy Coverage To Predictable Location
-        run: cp /home/runner/work/Github-Action-RnD/Github-Action-RnD/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml ${RUNNER_TEMP}/coverage.cobertura.xml
+        run: cp ${{ github.workspace }}/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml ${RUNNER_TEMP}/coverage.cobertura.xml
 
  
 
