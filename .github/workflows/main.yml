@@ -55,21 +55,21 @@ jobs:
       #  run: dotnet test  -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=opencover --no-build --verbosity normal <MyProject>.Tests/
     
       
-      - name: Copy Coverage To Predictable Location
-        run: cp ${{ github.workspace }}/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml ${{runner.temp}}/scoverage.cobertura.xml
-        #run: cp ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln ${{runner.temp}}/ 
+      #- name: Copy Coverage To Predictable Location
+      #  run: cp ${{ github.workspace }}/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml ${{runner.temp}}/scoverage.cobertura.xml
+      #  #run: cp ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln ${{runner.temp}}/ 
       
 
-      - name: Create Test Coverage Badge
-        uses: simon-k/dotnet-code-coverage-badge@v1.0.0
-        id: create_coverage_badge
-        with:
-          label: Unit Test Coverage
-          color: brightgreen
-          path: ${{runner.temp}}/scoverage.cobertura.xml
-          gist-filename: code-coverage.json
-          gist-id: 5bf83e97a2a65cce5fdb16e1eb1d1dbe
-          gist-auth-token: ${{ secrets.GIST_AUTH_TOKEN }}       
+      #- name: Create Test Coverage Badge
+      #  uses: simon-k/dotnet-code-coverage-badge@v1.0.0
+      #  id: create_coverage_badge
+      #  with:
+      #    label: Unit Test Coverage
+      #    color: brightgreen
+      #    path: ${{runner.temp}}/scoverage.cobertura.xml
+      #    gist-filename: code-coverage.json
+      #    gist-id: 5bf83e97a2a65cce5fdb16e1eb1d1dbe
+      #    gist-auth-token: ${{ secrets.GIST_AUTH_TOKEN }}       
     
 
       #- name: Copy Coverage To Predictable Location
