@@ -1,3 +1,5 @@
+using HelloWorldAPI.Controllers;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestSample.UnitTests
@@ -8,6 +10,10 @@ namespace TestSample.UnitTests
         [TestMethod]
         public void TestMethod1()
         {
+            ILogger<WeatherForecastController> logger = null;
+            WeatherForecastController d = new WeatherForecastController(logger);
+            d.GetData();
+
         }
     }
 }

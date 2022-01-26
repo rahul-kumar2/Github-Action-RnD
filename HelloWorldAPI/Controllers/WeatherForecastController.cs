@@ -29,5 +29,10 @@ namespace HelloWorldAPI.Controllers
             })
             .ToArray();
         }
+
+        public void GetData()
+        {
+             
+        }
     }
 }
