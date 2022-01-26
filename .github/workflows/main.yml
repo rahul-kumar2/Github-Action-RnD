@@ -30,7 +30,7 @@ jobs:
            echo "GITHUB_WORKSPACE = $GITHUB_WORKSPACE"
            echo "github.workspace = ${{ github.workspace }}"
            echo "github.workspace"
-           echo "${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln"
+           echo "${{ github.workspace }}" + "\HelloWorldAPI\HelloWorldAPI.sln"
 
 
 
