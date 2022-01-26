@@ -35,6 +35,10 @@ jobs:
             echo "${GITHUB_WORKSPACE}"
             echo "${RUNNER_TEMP}"
             echo "${RUNNER_TOOL_CACHE}"
+
+            echo ${GITHUB_WORKSPACE}
+            echo ${RUNNER_TEMP}
+            echo ${RUNNER_TOOL_CACHE}
             #echo "GITHUB_ACTIONS: ${RUNNER_TOOL_CACHE}"
 
       - name: Setup .NET
