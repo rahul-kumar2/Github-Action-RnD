@@ -50,7 +50,8 @@ jobs:
         run: dotnet build ${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln --no-restore
 
       - name: Test
-        run: dotnet test ${{ github.workspace }}\TestSample.UnitTests\*.UnitTests.csproj --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
+        #run: dotnet test **/*.UnitTests.csproj --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
+        run: dotnet test ${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
 
 
     
