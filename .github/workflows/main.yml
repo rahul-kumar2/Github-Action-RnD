@@ -29,7 +29,7 @@ jobs:
         run: |
            echo "GITHUB_WORKSPACE = $GITHUB_WORKSPACE"
            echo "github.workspace = ${{ github.workspace }}"
-           echo "github.workspace"
+           echo ${github.workspace}
            echo "${{ github.workspace }}" + "\HelloWorldAPI\HelloWorldAPI.sln"
            echo "${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln"
            echo  ${ github.workspace }/HelloWorldAPI/HelloWorldAPI.sln
@@ -51,23 +51,23 @@ jobs:
 
       - name: Test
         #run: dotnet test **/*.UnitTests.csproj --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
-        run: dotnet test ${ github.workspace }\HelloWorldAPI\HelloWorldAPI.sln --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
+        run: dotnet test ${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
 
 
     
 
-      - name: Copy Coverage To Predictable Location
-        run: cp /home/runner/work/Github-Action-RnD/Github-Action-RnD/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml ${RUNNER_TEMP}/coverage.cobertura.xml
+      #- name: Copy Coverage To Predictable Location
+      #  run: cp /home/runner/work/Github-Action-RnD/Github-Action-RnD/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml ${RUNNER_TEMP}/coverage.cobertura.xml
 
  
 
-      - name: Code Coverage Summary Report
-        uses: irongut/CodeCoverageSummary@v1.0.2
-        with:
-          filename: /home/runner/work/Github-Action-RnD/Github-Action-RnD/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml
-          badge: true
-          format: 'markdown'
-          output: 'both'
+      #- name: Code Coverage Summary Report
+      #  uses: irongut/CodeCoverageSummary@v1.0.2
+      #  with:
+      #    filename: /home/runner/work/Github-Action-RnD/Github-Action-RnD/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml
+      #    badge: true
+      #    format: 'markdown'
+      #    output: 'both'
      
       - name: Publish
         run: dotnet publish HelloWorldAPI/HelloWorldAPI.csproj -c Release -o web
