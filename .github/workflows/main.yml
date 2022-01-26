@@ -32,7 +32,7 @@ jobs:
            echo "github.workspace"
            echo "${{ github.workspace }}" + "\HelloWorldAPI\HelloWorldAPI.sln"
            echo "${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln"
-
+           echo  ${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln
 
 
 
@@ -45,7 +45,7 @@ jobs:
         #run: dotnet restore **/HelloWorldAPI.sln
         #run: dotnet restore C:\Projects\SelfRnD\GitHubAction\HelloWorldAPI\HelloWorldAPI.sln
 
-        run: dotnet restore "${{ github.workspace }}" + "\HelloWorldAPI\HelloWorldAPI.sln";
+        run: dotnet restore ${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln
 
 
         #run: dotnet restore C:\actions-runner\_work\Github-Action-RnD\Github-Action-RnD\HelloWorldAPI\HelloWorldAPI.sln
