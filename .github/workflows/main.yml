@@ -25,15 +25,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: echo-default-env-variables
-        run: |
-            echo "Home: ${GITHUB_ACTION_PATH}"
-            echo "GITHUB_WORKFLOW: ${GITHUB_ENV}"
-            echo "GITHUB_ACTIONS: ${GITHUB_EVENT_PATH}"
-            echo "GITHUB_ACTIONS: ${GITHUB_PATH}"
-            echo "GITHUB_ACTIONS: ${GITHUB_WORKFLOW}"
-            echo "GITHUB_ACTIONS: ${RUNNER_TEMP}"
-            echo "GITHUB_ACTIONS: ${RUNNER_TOOL_CACHE}"
+      #- name: echo-default-env-variables
+      #  run: |
+      #      echo "Home: ${GITHUB_ACTION_PATH}"
+      #      echo "GITHUB_WORKFLOW: ${GITHUB_ENV}"
+      #      echo "GITHUB_ACTIONS: ${GITHUB_EVENT_PATH}"
+      #      echo "GITHUB_ACTIONS: ${GITHUB_PATH}"
+      #      echo "GITHUB_ACTIONS: ${GITHUB_WORKFLOW}"
+      #      echo "GITHUB_ACTIONS: ${RUNNER_TEMP}"
+      #      echo "GITHUB_ACTIONS: ${RUNNER_TOOL_CACHE}"
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
