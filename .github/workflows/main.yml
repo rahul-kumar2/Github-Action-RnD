@@ -42,9 +42,9 @@ jobs:
       - name: Restore dependencies
         #run: dotnet restore **/HelloWorldAPI.sln
         #run: dotnet restore C:\Projects\SelfRnD\GitHubAction\HelloWorldAPI\HelloWorldAPI.sln
-        run: dotnet restore ${{ github.workspace }}/HelloWorldAPI\HelloWorldAPI.sln
+        run: dotnet restore ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln
         #run: dotnet restore C:\actions-runner\_work\Github-Action-RnD\Github-Action-RnD\HelloWorldAPI\HelloWorldAPI.sln
-
+                             #C:\actions-runner\_work\Github-Action-RnD\Github-Action-RnD
 
       - name: Build
         run: dotnet build **/HelloWorldAPI.sln --no-restore
