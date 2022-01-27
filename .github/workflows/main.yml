@@ -61,7 +61,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ${{ env.acr_name }}
-          username: ${{ env.rahulacrtest }}
+          username: ${{ env.acr_user_name }}
           password: ${{secrets.ACR_PWD}}
 
       - run: |
