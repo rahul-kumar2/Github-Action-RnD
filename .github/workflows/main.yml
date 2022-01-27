@@ -57,13 +57,19 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
+      #- name: ACR
+      #  uses: azure/docker-login@v1
+      #  with:
+      #    login-server: env.acr_name
+      #    username: ${{ env.acr_user_name }}
+      #    password: ${{ secrets.ACR_PWD }}
+ 
       - name: ACR
         uses: azure/docker-login@v1
         with:
-          login-server: env.acr_name
-          username: ${{ env.acr_user_name }}
-          password: ${{ secrets.ACR_PWD }}
-      
+          login-server: maerskao.azurecr.io
+          username: maerskao
+          password: 6Q=IS8wfC1W/G00zpC5L4fcioGpnilEK
  
     
       #- name: Login to ACR
