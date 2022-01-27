@@ -36,8 +36,8 @@ jobs:
       - name: token-replacement
         uses: cschleiden/replace-tokens@v1
         with:
-          tokenPrefix: '{'
-          tokenSuffix: '}'
+          tokenPrefix: '{{'
+          tokenSuffix: '}}'
           files: '["**/*.json"]'
         env:
           CDN: https://somecdn.com/...
@@ -48,17 +48,34 @@ jobs:
         with:
           dotnet-version: 6.0.x
           
-      - name: Restore dependencies
-        #run: dotnet restore **/HelloWorldAPI.sln
-        run: dotnet restore ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln
 
-      - name: Build
-        #run: dotnet build **/HelloWorldAPI.sln --no-restore
-        run: dotnet build ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln --no-restore
 
-      - name: Test
-        #run: dotnet test **/*.UnitTests.csproj --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
-        run: dotnet test ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
+
+
+
+      #- name: Restore dependencies
+      #  #run: dotnet restore **/HelloWorldAPI.sln
+      #  run: dotnet restore ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln
+
+      #- name: Build
+      #  #run: dotnet build **/HelloWorldAPI.sln --no-restore
+      #  run: dotnet build ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln --no-restore
+
+      #- name: Test
+      #  #run: dotnet test **/*.UnitTests.csproj --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
+      #  run: dotnet test ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
+
+
+
+
+
+
+
+
+
+
+
+
 
       #- name: Test
       #  run: dotnet test  -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=opencover --no-build --verbosity normal <MyProject>.Tests/
@@ -95,14 +112,18 @@ jobs:
       #    format: 'markdown'
       #    output: 'both'
      
-      - name: Publish
-        run: dotnet publish HelloWorldAPI/HelloWorldAPI.csproj -c Release -o web
 
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2.3.1
-        with:
-          # Artifact name
-          name: web
-          # A file, directory or wildcard pattern that describes what to upload
-          path: HelloWorldAPI/web/**
-          if-no-files-found: error 
+
+
+
+      #- name: Publish
+      #  run: dotnet publish HelloWorldAPI/HelloWorldAPI.csproj -c Release -o web
+
+      #- name: Upload a Build Artifact
+      #  uses: actions/upload-artifact@v2.3.1
+      #  with:
+      #    # Artifact name
+      #    name: web
+      #    # A file, directory or wildcard pattern that describes what to upload
+      #    path: HelloWorldAPI/web/**
+      #    if-no-files-found: error 
