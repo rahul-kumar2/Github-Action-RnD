@@ -40,9 +40,9 @@ jobs:
           tokenPrefix: '{{'
           tokenSuffix: '}}'
           files: '["**/*.json"]'
-        env:
-          CDN: https://somecdn.com/...
-          CALLBACK: some_value
+        #env:
+        #  CDN: https://somecdn.com/...
+        #  CALLBACK: some_value
 
 
       - name: Setup .NET
