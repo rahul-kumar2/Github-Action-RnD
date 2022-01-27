@@ -34,7 +34,7 @@ jobs:
            echo  ${{runner.temp}}
 
       - name: token-replacement
-      - uses: cschleiden/replace-tokens@v1
+        uses: cschleiden/replace-tokens@v1
         with:
           tokenPrefix: '{'
           tokenSuffix: '}'
