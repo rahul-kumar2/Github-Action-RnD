@@ -57,6 +57,9 @@ jobs:
           username: rahulacrtest
           password: 6Q=IS8wfC1W/G00zpC5L4fcioGpnilEK
 
+      - run: |
+          docker build . -t rahulacrtest.azurecr.io/k8sdemo:${{ github.sha }}
+          docker push rahulacrtest.azurecr.io/k8sdemo:${{ github.sha }}
 
 
 
