@@ -66,7 +66,8 @@ jobs:
 
       - run: |
           docker build -f ${{ github.workspace }}/HelloWorldAPI/Dockerfile . -t ${{ env.acr_name }}/${{ env.acr_repository_name }}:${{ github.sha }}
-          docker push rahulacrtest.azurecr.io/k8sdemo:${{ github.sha }}
+          #docker push rahulacrtest.azurecr.io/k8sdemo:${{ github.sha }}
+          docker push ${{env.acr_name}}/${{env.acr_repository_name}}:${{ github.sha }}
 
 
 
