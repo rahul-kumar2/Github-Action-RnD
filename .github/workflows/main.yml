@@ -64,14 +64,20 @@ jobs:
       #    username: ${{ env.acr_user_name }}
       #    password: ${{ secrets.ACR_PWD }}
  
-      - name: ACR maersk
-        uses: azure/docker-login@v1
+      #- name: ACR maersk
+      #  uses: azure/docker-login@v1
+      #  with:
+      #    login-server: maerskao.azurecr.io
+      #    username: maerskao
+      #    password: odC=4ZwC9AeL=oeb=D7ujuwqwv0ICMNF
+ 
+      - name: Login to ACR
+        uses: docker/login-action@v1
         with:
-          login-server: maerskao.azurecr.io
+          registry: maerskao.azurecr.io
           username: maerskao
           password: odC=4ZwC9AeL=oeb=D7ujuwqwv0ICMNF
- 
-    
+      
       #- name: Login to ACR
       #  uses: docker/login-action@v1
       #  with:
