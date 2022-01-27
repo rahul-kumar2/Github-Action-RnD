@@ -12,7 +12,7 @@ RUN dotnet restore "HelloWorldAPI/HelloWorldAPI.csproj"
 
 
 COPY . .
-WORKDIR "/src/HelloWorldAP."
+WORKDIR "/src/HelloWorldAPI"
 RUN dotnet build "HelloWorldAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
