@@ -35,7 +35,7 @@ jobs:
            echo  ${{secrets.GIST_AUTH_TOKEN}}
 
       - name: token-replacement
-        uses: cschleiden/replace-tokens@v1
+        uses: cschleiden/replace-tokens@v1.1
         with:
           tokenPrefix: '{{'
           tokenSuffix: '}}'
