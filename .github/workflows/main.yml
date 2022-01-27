@@ -53,9 +53,9 @@ jobs:
       - name: Login to ACR
         uses: docker/login-action@v1
         with:
-          registry: maerskao.azurecr.io
-          username: maerskao
-          password: 4ZwC9AeL=oeb=D7ujuwqwv0ICMNF
+          registry: rahulacrtest.azurecr.io
+          username: rahulacrtest
+          password: 6Q=IS8wfC1W/G00zpC5L4fcioGpnilEK
 
 
 
