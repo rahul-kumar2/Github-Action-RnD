@@ -69,7 +69,7 @@ jobs:
         with:
           login-server: maerskao.azurecr.io
           username: maerskao
-          password: 6Q=IS8wfC1W/G00zpC5L4fcioGpnilEK
+          password: odC=4ZwC9AeL=oeb=D7ujuwqwv0ICMNF
  
     
       #- name: Login to ACR
