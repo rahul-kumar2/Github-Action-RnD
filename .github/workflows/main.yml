@@ -56,18 +56,27 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 6.0.x
- 
-      - name: Login to ACR
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ env.acr_name }}
-          username: ${{ env.acr_user_name }}
-          password: ${{secrets.ACR_PWD}}
 
-      - run: |
-          docker build -f ${{ github.workspace }}/HelloWorldAPI/Dockerfile . -t ${{ env.acr_name }}/${{ env.acr_repository_name }}:${{ github.sha }}
-          #docker push rahulacrtest.azurecr.io/k8sdemo:${{ github.sha }}
-          docker push ${{env.acr_name}}/${{env.acr_repository_name}}:${{ github.sha }}
+      - name: ACR
+        uses: azure/docker-login@v1
+        with:
+          login-server: env.acr_name
+          username: ${{ env.acr_user_name }}
+          password: ${{ secrets.ACR_PWD }}
+      
+ 
+    
+      #- name: Login to ACR
+      #  uses: docker/login-action@v1
+      #  with:
+      #    registry: ${{ env.acr_name }}
+      #    username: ${{ env.acr_user_name }}
+      #    password: ${{secrets.ACR_PWD}}
+
+      #- run: |
+      #    docker build -f ${{ github.workspace }}/HelloWorldAPI/Dockerfile . -t ${{ env.acr_name }}/${{ env.acr_repository_name }}:${{ github.sha }}
+      #    #docker push rahulacrtest.azurecr.io/k8sdemo:${{ github.sha }}
+      #    docker push ${{env.acr_name}}/${{env.acr_repository_name}}:${{ github.sha }}
 
 
 
