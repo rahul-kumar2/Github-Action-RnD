@@ -60,7 +60,7 @@ jobs:
           files: '["**/*.json"]'
         env:
           #CDN: https://somecdn.com/...
-          GIST_AUTH_TOKEN: ${{secrets.GIST_AUTH_TOKEN}}
+          GIST_AUTH_TOKEN: $secrets.GIST_AUTH_TOKEN
 
 
       - name: Setup .NET
