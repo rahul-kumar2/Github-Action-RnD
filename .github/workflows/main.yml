@@ -40,6 +40,8 @@ jobs:
            echo "${{ github.workspace }}\HelloWorldAPI\HelloWorldAPI.sln"
            echo  ${{runner.temp}}
            echo  ${{secrets.GIST_AUTH_TOKEN}}
+           echo  ${{secrets.GITHUB_TOKEN }}
+
 
       - name: token-replacement
         uses: cschleiden/replace-tokens@v1.1
