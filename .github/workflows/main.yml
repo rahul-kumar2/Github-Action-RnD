@@ -89,16 +89,29 @@ jobs:
       #    username: maerskao
       #    password: odC=4ZwC9AeL=oeb=D7ujuwqwv0ICMNF
 
+
+
+
+
       - name: Build image
         run: docker build . --file ${{ github.workspace }}/HelloWorldAPI/Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
 
-      - name: Log in to registry
-        # This is where you will update the PAT to GITHUB_TOKEN
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Push to github registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      #- name: Log in to registry
+      #  # This is where you will update the PAT to GITHUB_TOKEN
+      #  run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Push image
         run: |
+          #IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+
 
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
