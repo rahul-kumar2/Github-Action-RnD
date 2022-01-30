@@ -164,10 +164,10 @@ jobs:
       - name: login to acr
         uses: docker/login-action@v1 
         with:
-          registry: $acr_name
-          username: $acr_user_name
-          password: $secrets.acr_pwd
-
+          registry: ${{ env.acr_name }}
+          username: ${{ acr_user_name }}
+          password: ${{ secrets.acr_pwd }}
+          
       - run: |
           docker build -f ${{ github.workspace }}/helloworldapi/dockerfile . -t ${{ env.acr_name }}/${{ env.acr_repository_name }}:${{ github.sha }}
           #docker push rahulacrtest.azurecr.io/k8sdemo:${{ github.sha }}
