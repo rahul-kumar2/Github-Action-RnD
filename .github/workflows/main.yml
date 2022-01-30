@@ -50,7 +50,7 @@ jobs:
            echo  ${{ github.repository }}
            echo  $IMAGE_NAME
            echo  $acr_name
-
+           echo  ${{ acr_name }}
 
       - name: token-replacement
         uses: cschleiden/replace-tokens@v1.1
