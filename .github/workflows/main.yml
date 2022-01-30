@@ -21,7 +21,7 @@ env:
   acr_repository_name: k8sdemo
   REGISTRY: ghcr.io
   #IMAGE_NAME: ${{ github.repository }}
-  IMAGE_NAME:   rahulgirhubaction  
+  IMAGE_NAME:   ${{ env.acr_repository_name }}:${{ github.sha }}  
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -182,7 +182,7 @@ jobs:
       - name: Push image
         run: |
           #IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
-          IMAGE_ID=ghcr.io/${{ env.acr_repository_name }}:${{ github.sha }}
+          IMAGE_ID=ghcr.io/$IMAGE_NAME
 
           #IMAGE_ID=ghcr.io/rk/$IMAGE_NAME
 
