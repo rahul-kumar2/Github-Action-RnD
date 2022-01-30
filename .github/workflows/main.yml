@@ -164,7 +164,9 @@ jobs:
           password: ${{ secrets.acr_pwd }}
           
       - run: |
-          docker build -f ${{ github.workspace }}/HelloWorldAPI/Dockerfile . -t ${{ env.acr_name }}/${{ env.acr_repository_name }}:${{ github.sha }}
+          #docker build -f ${{ github.workspace }}/HelloWorldAPI/Dockerfile . -t ${{ env.acr_name }}/${{ env.acr_repository_name }}:${{ github.sha }}
+          docker build -f ${{ github.workspace }}/HelloWorldAPI/Dockerfile . -t ${{ env.acr_repository_name }}:${{ github.sha }}
+
           docker push ${{env.acr_name}}/${{env.acr_repository_name}}:${{ github.sha }}
 
       - name: Push to github registry
@@ -180,7 +182,9 @@ jobs:
 
       - name: Push image
         run: |
-          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+          #IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+          IMAGE_ID=ghcr.io/${{ env.acr_repository_name }}:${{ github.sha }}
+
           #IMAGE_ID=ghcr.io/rk/$IMAGE_NAME
 
 
