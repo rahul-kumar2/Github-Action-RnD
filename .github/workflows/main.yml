@@ -164,8 +164,8 @@ jobs:
       - name: login to acr
         uses: docker/login-action@v1 
         with:
-          registry: $env.acr_name
-          username: $env.acr_user_name
+          registry: $acr_name
+          username: $acr_user_name
           password: $secrets.acr_pwd
 
       - run: |
