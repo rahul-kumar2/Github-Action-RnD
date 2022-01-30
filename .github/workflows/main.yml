@@ -94,7 +94,8 @@ jobs:
 
 
       - name: Build image
-        run: docker build . --file ${{ github.workspace }}/HelloWorldAPI/Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
+        #run: docker build . --file ${{ github.workspace }}/HelloWorldAPI/Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
+        run: docker build . --file ${{ github.workspace }}/HelloWorldAPI/Dockerfile --tag $IMAGE_NAME --label "runnumber=${{ github.sha }}"
 
       - name: Push to github registry
         uses: docker/login-action@v1
@@ -109,8 +110,8 @@ jobs:
 
       - name: Push image
         run: |
-          #IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
-          IMAGE_ID=ghcr.io/rk/$IMAGE_NAME
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+          #IMAGE_ID=ghcr.io/rk/$IMAGE_NAME
 
 
           # Change all uppercase to lowercase
