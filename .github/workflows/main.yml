@@ -20,7 +20,7 @@ env:
   acr_user_name: rahulacrvssub
   acr_repository_name: k8sdemo
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: acr
   #IMAGE_NAME:   k8sdemo:${{ github.sha }}  
 
 
