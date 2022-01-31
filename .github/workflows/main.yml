@@ -98,7 +98,7 @@ jobs:
 
   test:
     needs: [build]
-    uses:  rahul-kumar2/github-action-rnd/.github/workflows/publish.yml@main
+    uses:  rahul-kumar2/github-action-rnd/.github/workflows/reusable/publish.yml@main
     with:
       username: test
 
