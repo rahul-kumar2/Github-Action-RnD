@@ -103,11 +103,13 @@ jobs:
       username: test
 
   pre-prod:
+    needs: [build]
     uses:  rahul-kumar2/github-action-rnd/.github/workflows/publish.yml@main
     with:
       username: preprod
 
   prod:
+    needs: [pre-prod]
     uses:  rahul-kumar2/github-action-rnd/.github/workflows/publish.yml@main
     with:
       username: prod
