@@ -183,8 +183,12 @@ jobs:
       - name: Push image
         run: |
           #IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
-          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
 
+          repo=$(echo ${{ github.repository }} | tr '[A-Z]' '[a-z]')
+
+
+          IMAGE_ID=ghcr.io/$repo/$IMAGE_NAME
+          #IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
           #IMAGE_ID=ghcr.io/rk/$IMAGE_NAME
 
 
