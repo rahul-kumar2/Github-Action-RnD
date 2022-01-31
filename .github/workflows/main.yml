@@ -189,7 +189,7 @@ jobs:
 
           #IMAGE_ID=ghcr.io/$repo/$IMAGE_NAME
 
-          IMAGE_ID=${{ env.REGISTRY }}/rahul-kumar2/Github-Action-RnD/$IMAGE_NAME
+          IMAGE_ID=${{ env.REGISTRY }}/rahul-kumar2/github-action-rnd/$IMAGE_NAME
 
 
 
