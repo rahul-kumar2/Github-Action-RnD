@@ -73,9 +73,9 @@ jobs:
           username: ${{ env.acr_user_name }}
           password: ${{ secrets.acr_pwd }}
           
-      - run: |
-          docker build -f ${{ github.workspace }}/HelloWorldAPI/Dockerfile . -t ${{ env.acr_name }}/${{ env.acr_repository_name }}:${{ github.sha }}
-          docker push ${{env.acr_name}}/${{env.acr_repository_name}}:${{ github.sha }}
+      #- run: |
+      #    docker build -f ${{ github.workspace }}/HelloWorldAPI/Dockerfile . -t ${{ env.acr_name }}/${{ env.acr_repository_name }}:${{ github.sha }}
+      #    docker push ${{env.acr_name}}/${{env.acr_repository_name}}:${{ github.sha }}
 
 
       - name: Push to github registry
@@ -88,13 +88,13 @@ jobs:
       - name: Build image
         run: docker build . --file ${{ github.workspace }}/HelloWorldAPI/Dockerfile --tag $IMAGE_NAME --label "runnumber=${{ github.sha }}"
 
-      - name: Push image
-        run: |
-          repo=$(echo ${{ github.repository }} | tr '[A-Z]' '[a-z]')
-          IMAGE_ID=${{ env.REGISTRY }}/$repo/$IMAGE_NAME
-          docker tag $IMAGE_NAME $IMAGE_ID:latest
-          #docker push $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID 
+      #- name: Push image
+      #  run: |
+      #    repo=$(echo ${{ github.repository }} | tr '[A-Z]' '[a-z]')
+      #    IMAGE_ID=${{ env.REGISTRY }}/$repo/$IMAGE_NAME
+      #    docker tag $IMAGE_NAME $IMAGE_ID:latest
+      #    #docker push $IMAGE_ID:$VERSION
+      #    docker push $IMAGE_ID 
 
   test:
     needs: [build]
