@@ -96,10 +96,21 @@ jobs:
           #docker push $IMAGE_ID:$VERSION
           docker push $IMAGE_ID 
 
-  call-workflow-passing-data:
+  test:
+    needs: [build]
     uses:  rahul-kumar2/github-action-rnd/.github/workflows/publish.yml@main
     with:
-      username: mona
+      username: test
+
+  pre-prod:
+    uses:  rahul-kumar2/github-action-rnd/.github/workflows/publish.yml@main
+    with:
+      username: preprod
+
+  prod:
+    uses:  rahul-kumar2/github-action-rnd/.github/workflows/publish.yml@main
+    with:
+      username: prod
  
 
 
