@@ -96,10 +96,106 @@ jobs:
           #docker push $IMAGE_ID:$VERSION
           docker push $IMAGE_ID 
 
-  test:
-    needs: [build]
-    runs-on: ubuntu-latest
+  call-workflow-passing-data:
+    uses:  rahul-kumar2/github-action-rnd/.github/workflows/publish.yml@main
+    with:
+      username: mona
+ 
 
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+
+
+  #test:
+  #  needs: [build]
+  #  runs-on: ubuntu-latest
+
+  #  steps:
+  #    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+  #    - uses: actions/checkout@v2
+  #    - run: env
+
+
+
+
+ 
+
+ 
+
+
+ 
+
+
+
+      #- name: Restore dependencies
+      #  #run: dotnet restore **/HelloWorldAPI.sln
+      #  run: dotnet restore ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln
+
+      #- name: Build
+      #  #run: dotnet build **/HelloWorldAPI.sln --no-restore
+      #  run: dotnet build ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln --no-restore
+
+      #- name: Test
+      #  #run: dotnet test **/*.UnitTests.csproj --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
+      #  run: dotnet test ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln --no-build --verbosity normal --collect:"XPlat Code Coverage" --logger trx
+
+
+
+
+
+
+
+
+
+
+
+
+
+      #- name: Test
+      #  run: dotnet test  -p:CollectCoverage=true -p:CoverletOutput=TestResults/ -p:CoverletOutputFormat=opencover --no-build --verbosity normal <MyProject>.Tests/
+    
+      
+      #- name: Copy Coverage To Predictable Location
+      #  run: cp ${{ github.workspace }}/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml ${{runner.temp}}/scoverage.cobertura.xml
+      #  #run: cp ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln ${{runner.temp}}/ 
+      
+
+      #- name: Create Test Coverage Badge
+      #  uses: simon-k/dotnet-code-coverage-badge@v1.0.0
+      #  id: create_coverage_badge
+      #  with:
+      #    label: Unit Test Coverage
+      #    color: brightgreen
+      #    path: ${{runner.temp}}/scoverage.cobertura.xml
+      #    gist-filename: code-coverage.json
+      #    gist-id: 5bf83e97a2a65cce5fdb16e1eb1d1dbe
+      #    gist-auth-token: ${{ secrets.GIST_AUTH_TOKEN }}       
+    
+
+      #- name: Copy Coverage To Predictable Location
+      #  run: cp ${{ github.workspace }}/TestSample.UnitTests/TestResults/*/coverage.cobertura.xml ${{runner.temp}}/scoverage.cobertura.xml
+      #  #run: cp ${{ github.workspace }}/HelloWorldAPI/HelloWorldAPI.sln ${{runner.temp}}/ 
+
+ 
+
+      #- name: Code Coverage Summary Report
+      #  uses: irongut/CodeCoverageSummary@v1.0.2
+      #  with:
+      #    filename: ${{runner.temp}}/scoverage.cobertura.xml
+      #    badge: true
+      #    format: 'markdown'
+      #    output: 'both'
+     
+
+
+
+
+      #- name: Publish
+      #  run: dotnet publish HelloWorldAPI/HelloWorldAPI.csproj -c Release -o web
+
+      #- name: Upload a Build Artifact
+      #  uses: actions/upload-artifact@v2.3.1
+      #  with:
+      #    # Artifact name
+      #    name: web
+      #    # A file, directory or wildcard pattern that describes what to upload
+      #    path: HelloWorldAPI/web/**
+      #    if-no-files-found: error 
