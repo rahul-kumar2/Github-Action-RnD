@@ -49,7 +49,9 @@ jobs:
            echo  $IMAGE_NAME
            echo  $acr_name
            echo  ${{ env.acr_name }}
-           echo ${{ steps.branch-name.outputs.current_branch }}
+           echo ${{ GITHUB_BASE_REF }}
+           echo ${{ GITHUB_HEAD_REF }}
+           echo ${{ GITHUB_REF }}
 
 
       - name: token-replacement
