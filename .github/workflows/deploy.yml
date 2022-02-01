@@ -31,9 +31,9 @@ jobs:
            echo  ${{ secrets.azure_cr }}
         
 
-      ## Set the target Azure Kubernetes Service (AKS) cluster. 
-      #- uses: azure/aks-set-context@v1
-      #  with:
-      #    creds: ${{ secrets.AZURE_CREDENTIALS }}
-      #    cluster-name: rahul-cluster
-      #    resource-group: CICD
+      # Set the target Azure Kubernetes Service (AKS) cluster. 
+      - uses: azure/aks-set-context@v1
+        with:
+          creds: '${{ secrets.azure_cr }}'
+          cluster-name: rahul-cluster
+          resource-group: CICD
