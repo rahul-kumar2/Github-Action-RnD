@@ -19,3 +19,10 @@ jobs:
     steps:
       - name: Print the input name to STDOUT
         run: echo The username is ${{ inputs.username }} 
+
+      # Set the target Azure Kubernetes Service (AKS) cluster. 
+      - uses: azure/aks-set-context@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+          cluster-name: rahul-cluster
+          resource-group: CICD

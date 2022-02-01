@@ -82,9 +82,9 @@ jobs:
           username: ${{ env.acr_user_name }}
           password: ${{ secrets.acr_pwd }}
           
-      - run: |
-          docker build -f ${{ github.workspace }}/HelloWorldAPI/Dockerfile . -t ${{ env.acr_name }}/${{ env.acr_repository_name }}:${{ github.sha }}
-          docker push ${{env.acr_name}}/${{env.acr_repository_name}}:${{ github.sha }}
+      #- run: |
+      #    docker build -f ${{ github.workspace }}/HelloWorldAPI/Dockerfile . -t ${{ env.acr_name }}/${{ env.acr_repository_name }}:${{ github.sha }}
+      #    docker push ${{env.acr_name}}/${{env.acr_repository_name}}:${{ github.sha }}
 
 
       #- name: Push to github registry
