@@ -120,6 +120,7 @@ jobs:
     if: ${{ github.event.inputs.enableManualDeployement == 'false' || github.ref == 'refs/heads/main' }} 
     with:
       username: test
+    secrets:
       azure_cr:  ${{secrets.AZURE_CREDENTIALS }}
 
   #test:

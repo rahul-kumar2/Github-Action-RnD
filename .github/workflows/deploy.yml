@@ -10,11 +10,12 @@ on:
         default: 'john-doe'
         required: false
         type: string
+
+    secrets:
       azure_cr:
-        description: 'A username passed from the caller workflow'
-        default: 'john-doe'
-        required: false
-        type: string
+        required: true
+        description: A token with access to the repository, e.g. GITHUB_TOKEN
+ 
 
 jobs:
   deploy:
@@ -27,7 +28,7 @@ jobs:
            echo The username is ${{ inputs.username }} 
            echo  ${{secrets.GIST_AUTH_TOKEN}}
            echo  ${{secrets.GITHUB_TOKEN }}
-           echo  ${{ inputs.azure_cr }}
+           echo  ${{ secrets.azure_cr }}
         
 
       ## Set the target Azure Kubernetes Service (AKS) cluster. 
