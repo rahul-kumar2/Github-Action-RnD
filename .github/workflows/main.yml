@@ -111,7 +111,8 @@ jobs:
            
   prod:
     needs: [build]
-    uses:  ./.github/workflows/deploy.yml
+    uses:  ./.github/workflows/reusable/deploy.yml
+    if: ${{ github.ref == 'refs/heads/main' }} 
     with:
       username: test
 
