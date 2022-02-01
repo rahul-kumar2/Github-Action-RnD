@@ -49,6 +49,7 @@ jobs:
            echo  $IMAGE_NAME
            echo  $acr_name
            echo  ${{ env.acr_name }}
+           echo ${{ needs.rules.outputs.branch_name }}
 
       - name: token-replacement
         uses: cschleiden/replace-tokens@v1.1
@@ -105,6 +106,7 @@ jobs:
   pre-prod:
     needs: [build]
     uses:  rahul-kumar2/github-action-rnd/.github/workflows/deploy.yml@main
+    if: ${{ <expression> }}
     with:
       username: preprod
 
