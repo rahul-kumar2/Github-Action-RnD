@@ -103,7 +103,7 @@ jobs:
   test:
     needs: [build]
     uses:  rahul-kumar2/github-action-rnd/.github/workflows/deploy.yml@main
-    if: failure() && !contains( github.ref, 'refs/heads/test-' )
+    if: sucess() && !contains( github.ref, 'refs/heads/test-' )
     with:
       username: test
 
