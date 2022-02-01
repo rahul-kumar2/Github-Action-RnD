@@ -9,6 +9,7 @@ on:
     branches: [ main, test-*  ]
   pull_request:
     branches: [ main ]
+
   workflow_dispatch:
    inputs: 
     enableManualDeployement :
