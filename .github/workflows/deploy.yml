@@ -15,6 +15,7 @@ jobs:
   deploy:
     name: Deploy to ${{ inputs.username }}
     runs-on: ubuntu-latest
+    environment : test
     steps:
       - name: Print the input name to STDOUT
         run: echo The username is ${{ inputs.username }}

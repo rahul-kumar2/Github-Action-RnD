@@ -101,14 +101,19 @@ jobs:
       #    #docker push $IMAGE_ID:$VERSION
       #    docker push $IMAGE_ID 
 
-  reusable_workflow_job:
-    runs-on: ubuntu-latest
-    environment: test
-    steps:
-      - uses: ./.github/workflows/deploy.yml
-        with:
-          username: test
+  #reusable_workflow_job:
+  #  runs-on: ubuntu-latest
+  #  environment: test
+  #  steps:
+  #    - uses: ./.github/workflows/deploy.yml
+  #      with:
+  #        username: test
            
+  prod:
+    needs: [test]
+    uses:  ./.github/workflows/deploy.yml
+    with:
+      username: test
 
   #test:
   #  runs-on: ubuntu-latest    
