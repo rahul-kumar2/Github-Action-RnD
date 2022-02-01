@@ -101,10 +101,25 @@ jobs:
       #    #docker push $IMAGE_ID:$VERSION
       #    docker push $IMAGE_ID 
 
-  test:
-    needs: [build]
-    uses:  ./.github/workflows/deploy.yml
-    if: ${{ github.ref == 'refs/heads/main'}}
+  reusable_workflow_job:
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - uses: ./.github/workflows/deploy.yml
+        with:
+          username: test
+           
+
+  #test:
+  #  runs-on: ubuntu-latest    
+  #  #uses:  ./.github/workflows/deploy.yml
+  #  if: ${{ github.ref == 'refs/heads/main'}} 
+  #  name: test
+  # environment: dev
+  #    name: test
+  #  needs: [build]
+
+
     with:
       username: test
 
