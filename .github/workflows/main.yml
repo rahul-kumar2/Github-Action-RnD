@@ -50,9 +50,9 @@ jobs:
            echo  $acr_name
            echo  ${{ env.acr_name }}
            echo ${{ github.base.ref }}
-           echo ${{ GITHUB_HEAD_REF }}
-           echo ${{ GITHUB_REF }}
-           echo ${{ GITHUB_REF_NAME }}
+           echo ${{ github.head.ref }}
+           echo ${{ github.ref }}
+           echo ${{  github.ref.name }}
 
       - name: token-replacement
         uses: cschleiden/replace-tokens@v1.1
