@@ -12,8 +12,8 @@ on:
   workflow_dispatch:
    inputs: 
     enableManualDeployement :
-      description: 'True or False'
-      default: 'false'
+      description: 'Click to enable manual deployment on test environemnt.'
+      #default: 'false'
       required: true    
       type: boolean
       
@@ -63,7 +63,7 @@ jobs:
            echo ${{ github.head.ref }}
            echo ${{ github.ref }}
            #echo ${{  github.ref.name }}
-           echo ${{ github.event.inputs.releaseType }}
+           echo ${{ github.event.inputs.enableManualDeployement }}
 
       - name: token-replacement
         uses: cschleiden/replace-tokens@v1.1
@@ -123,7 +123,7 @@ jobs:
     needs: [build]
     uses:  ./.github/workflows/deploy.yml
     #if: ${{ github.ref == 'refs/heads/main' }} 
-    if: ${{ github.event.inputs.releaseType == 'rahul' }} 
+    if: ${{ github.event.inputs.enableManualDeployement == 'true' }} 
     with:
       username: test
 
