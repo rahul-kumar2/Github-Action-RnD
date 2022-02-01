@@ -6,7 +6,7 @@ name: HelloCI/CD
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [ main, test-*  ]
   pull_request:
     branches: [ main ]
 
@@ -104,7 +104,7 @@ jobs:
   test:
     needs: [build]
     uses:  rahul-kumar2/github-action-rnd/.github/workflows/deploy.yml@main
-    if: ${{ github.ref == 'refs/heads/main' || is_dev_test == true }}
+    if: ${{ github.ref == 'refs/heads/main'}}
     with:
       username: test
 
