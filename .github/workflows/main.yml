@@ -12,8 +12,7 @@ on:
   workflow_dispatch:
    inputs: 
     enableManualDeployement :
-      description: 'Click to enable manual deployment on test environemnt.'
-      #default: 'false'
+      description: 'Click to enable manual deployment from a custom branch to the test environment.'
       required: true    
       type: boolean
       
