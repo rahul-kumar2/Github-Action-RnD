@@ -60,6 +60,7 @@ jobs:
            echo ${{ github.head.ref }}
            echo ${{ github.ref }}
            echo ${{  github.ref.name }}
+           echo ${{ github.event.inputs.delay_seconds }}
 
       - name: token-replacement
         uses: cschleiden/replace-tokens@v1.1
