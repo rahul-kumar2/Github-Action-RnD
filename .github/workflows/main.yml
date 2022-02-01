@@ -49,7 +49,8 @@ jobs:
            echo  $IMAGE_NAME
            echo  $acr_name
            echo  ${{ env.acr_name }}
-           echo ${{ needs.rules.outputs.branch_name }}
+           echo ${{ steps.branch-name.outputs.current_branch }}
+
 
       - name: token-replacement
         uses: cschleiden/replace-tokens@v1.1
