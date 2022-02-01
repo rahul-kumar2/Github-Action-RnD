@@ -109,7 +109,7 @@ jobs:
   pre-prod:
     needs: [build]
     uses:  rahul-kumar2/github-action-rnd/.github/workflows/deploy.yml@main
-    if: ${{ github.ref == refs/heads/test }}
+    if: ${{ github.ref == 'refs/heads/test' }}
     with:
       username: preprod
 
