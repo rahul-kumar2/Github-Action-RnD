@@ -34,6 +34,6 @@ jobs:
       # Set the target Azure Kubernetes Service (AKS) cluster. 
       - uses: azure/aks-set-context@v1
         with:
-          creds: '${{ secrets.azure_cr }}'
+          creds: ${{ secrets.azure_cr }}
           cluster-name: rahul-cluster
           resource-group: CICD
