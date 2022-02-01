@@ -110,7 +110,7 @@ jobs:
   #        username: test
            
   prod:
-    needs: [test]
+    needs: [build]
     uses:  ./.github/workflows/deploy.yml
     with:
       username: test
