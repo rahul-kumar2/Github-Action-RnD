@@ -103,28 +103,28 @@ jobs:
 
   test:
     needs: [build]
-    uses:  rahul-kumar2/github-action-rnd/.github/workflows/deploy.yml@workflow
+    uses:  ./.github/workflows/deploy.yml
     if: ${{ github.ref == 'refs/heads/main'}}
     with:
       username: test
 
-  pre-prod:
-    needs: [build]
-    uses:  rahul-kumar2/github-action-rnd/.github/workflows/deploy.yml@workflow
-    #if: ${{ github.ref == 'refs/heads/test-' }}
-    #if: startsWith(github.ref, 'refs/heads/test')
-    if: startsWith(github.ref, 'refs/heads/test-')
-    #if: contains('${{ github.ref }}', 'test-')
+  ##pre-prod:
+  ##  needs: [build]
+  ##  uses:  rahul-kumar2/github-action-rnd/.github/workflows/deploy.yml@workflow
+  ##  #if: ${{ github.ref == 'refs/heads/test-' }}
+  ##  #if: startsWith(github.ref, 'refs/heads/test')
+  ##  if: startsWith(github.ref, 'refs/heads/test-')
+  ##  #if: contains('${{ github.ref }}', 'test-')
  
 
-    with:
-      username: preprod
+  ##  with:
+  ##    username: preprod
 
-  prod:
-    needs: [pre-prod]
-    uses:  rahul-kumar2/github-action-rnd/.github/workflows/deploy.yml@workflow
-    with:
-      username: prod
+  ##prod:
+  ##  needs: [pre-prod]
+  ##  uses:  rahul-kumar2/github-action-rnd/.github/workflows/deploy.yml@workflow
+  ##  with:
+  ##    username: prod
  
 
 
