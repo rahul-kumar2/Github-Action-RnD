@@ -10,7 +10,7 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-   inouts:
+   inputs: 
     releaseType:
       description: 'A username passed from the caller workflow'
       default: 'john-doe'
