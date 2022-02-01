@@ -14,8 +14,9 @@ on:
     releaseType:
       description: 'A username passed from the caller workflow'
       default: 'john-doe'
-      required: false
-      type: string
+      required: true
+ 
+ 
 
 
   # Allows you to run this workflow manually from the Actions tab
@@ -59,8 +60,8 @@ jobs:
            echo ${{ github.base.ref }}
            echo ${{ github.head.ref }}
            echo ${{ github.ref }}
-           echo ${{  github.ref.name }}
-           echo ${{ github.event.inputs.delay_seconds }}
+           #echo ${{  github.ref.name }}
+           echo ${{ github.event.inputs.releaseType }}
 
       - name: token-replacement
         uses: cschleiden/replace-tokens@v1.1
