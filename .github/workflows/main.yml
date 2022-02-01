@@ -11,10 +11,12 @@ on:
     branches: [ main ]
   workflow_dispatch:
    inputs: 
-    releaseType:
-      description: 'A username passed from the caller workflow'
-      default: 'john-doe'
-      required: true
+    enableManualDeployement :
+      description: 'True or False'
+      default: 'false'
+      required: true    
+      type: boolean
+      
  
  
 
