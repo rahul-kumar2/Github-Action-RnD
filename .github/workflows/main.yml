@@ -47,6 +47,7 @@ jobs:
            echo  ${{runner.temp}}
            echo  ${{secrets.GIST_AUTH_TOKEN}}
            echo  ${{secrets.GITHUB_TOKEN }}
+           echo  ${{secrets.GITHUB_TOKEN }}
            echo  ${{ github.actor }}
            echo  ${{ env.REGISTRY }}
            echo  ${{ github.repository }}

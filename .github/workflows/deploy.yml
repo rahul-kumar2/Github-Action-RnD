@@ -18,11 +18,16 @@ jobs:
     environment : ${{ inputs.username }}
     steps:
       - name: Print the input name to STDOUT
-        run: echo The username is ${{ inputs.username }} 
+        run: |
+           echo The username is ${{ inputs.username }} 
+           echo  ${{secrets.GIST_AUTH_TOKEN}}
+           echo  ${{secrets.GITHUB_TOKEN }}
+           echo  ${{secrets.AZURE_CREDENTIALS }}
+        
 
-      # Set the target Azure Kubernetes Service (AKS) cluster. 
-      - uses: azure/aks-set-context@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          cluster-name: rahul-cluster
-          resource-group: CICD
+      ## Set the target Azure Kubernetes Service (AKS) cluster. 
+      #- uses: azure/aks-set-context@v1
+      #  with:
+      #    creds: ${{ secrets.AZURE_CREDENTIALS }}
+      #    cluster-name: rahul-cluster
+      #    resource-group: CICD
