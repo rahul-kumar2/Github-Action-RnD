@@ -120,7 +120,8 @@ jobs:
   prod:
     needs: [build]
     uses:  ./.github/workflows/deploy.yml
-    if: ${{ github.ref == 'refs/heads/main' }} 
+    #if: ${{ github.ref == 'refs/heads/main' }} 
+    if: ${{ github.event.inputs.releaseType == 'rahul' }} 
     with:
       username: test
 
