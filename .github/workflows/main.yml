@@ -9,11 +9,17 @@ on:
     branches: [ main, test-*  ]
   pull_request:
     branches: [ main ]
-
+  workflow_dispatch:
+   inouts:
+    releaseType:
+      description: 'A username passed from the caller workflow'
+      default: 'john-doe'
+      required: false
+      type: string
 
 
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+ 
 
 env:
   acr_name: rahulacrvssub.azurecr.io
