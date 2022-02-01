@@ -16,14 +16,7 @@ on:
       description: 'Click to enable manual deployment from a custom branch to the test environment.'
       default: 'false'
       required: true    
-      type: boolean
-      
- 
- 
-
-
-  # Allows you to run this workflow manually from the Actions tab
- 
+      type: boolean 
 
 env:
   acr_name: rahulacrvssub.azurecr.io
@@ -89,17 +82,17 @@ jobs:
           username: ${{ env.acr_user_name }}
           password: ${{ secrets.acr_pwd }}
           
-      #- run: |
-      #    docker build -f ${{ github.workspace }}/HelloWorldAPI/Dockerfile . -t ${{ env.acr_name }}/${{ env.acr_repository_name }}:${{ github.sha }}
-      #    docker push ${{env.acr_name}}/${{env.acr_repository_name}}:${{ github.sha }}
+      - run: |
+          docker build -f ${{ github.workspace }}/HelloWorldAPI/Dockerfile . -t ${{ env.acr_name }}/${{ env.acr_repository_name }}:${{ github.sha }}
+          docker push ${{env.acr_name}}/${{env.acr_repository_name}}:${{ github.sha }}
 
 
-      - name: Push to github registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+      #- name: Push to github registry
+      #  uses: docker/login-action@v1
+      #  with:
+      #    registry: ${{ env.REGISTRY }}
+      #    username: ${{ github.actor }}
+      #    password: ${{ secrets.GITHUB_TOKEN }}
 
       #- name: Build image
       #  run: docker build . --file ${{ github.workspace }}/HelloWorldAPI/Dockerfile --tag $IMAGE_NAME --label "runnumber=${{ github.sha }}"
@@ -122,9 +115,8 @@ jobs:
            
   prod:
     needs: [build]
-    uses:  ./.github/workflows/deploy.yml
-    #if: ${{ github.ref == 'refs/heads/main' }} 
-    if: ${{ github.event.inputs.enableManualDeployement == 'true' || github.ref == 'refs/heads/main' }} 
+    uses:  ./.github/workflows/deploy.yml 
+    if: ${{ github.event.inputs.enableManualDeployement == 'false' || github.ref == 'refs/heads/main' }} 
     with:
       username: test
 
