@@ -104,7 +104,7 @@ jobs:
   test:
     needs: [build]
     uses:  rahul-kumar2/github-action-rnd/.github/workflows/deploy.yml@main
-    if: ${{ github.ref == 'refs/heads/main' || env.is_dev_test == true }}
+    if: ${{ github.ref == 'refs/heads/main' || is_dev_test == true }}
     with:
       username: test
 
