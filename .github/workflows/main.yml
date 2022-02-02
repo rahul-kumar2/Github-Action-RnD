@@ -16,7 +16,7 @@ on:
       description: 'Click to enable manual deployment from a custom branch to the test environment.'
       default: 'false'
       required: true    
-      type: boolean 
+      type: boolean  
 
 env:
   acr_name: rahulacrvssub.azurecr.io
