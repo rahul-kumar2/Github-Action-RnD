@@ -22,5 +22,5 @@ jobs:
     environment : ${{ inputs.username }}
     steps:
       - name: Print the input name to STDOUT
-        #run: |
-        #   echo "Hello"
+        run: |
+            
