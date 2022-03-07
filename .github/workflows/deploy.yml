@@ -1,4 +1,4 @@
-# This is a basic workflow to help you get started with Actions
+# This is a basic work flow to help you get started with Actions
 
 name: deploy
 
@@ -26,9 +26,9 @@ jobs:
       - name: Print the input name to STDOUT
         run: |
            echo The username is ${{ inputs.username }} 
-           echo  ${{secrets.GIST_AUTH_TOKEN}}
-           echo  ${{secrets.GITHUB_TOKEN }}
-           echo  ${{ secrets.azure_cr }}
+           #echo  ${{secrets.GIST_AUTH_TOKEN}}
+           #echo  ${{secrets.GITHUB_TOKEN }}
+           #echo  ${{ secrets.azure_cr }}
         
 
       # Set the target Azure Kubernetes Service (AKS) cluster. 
