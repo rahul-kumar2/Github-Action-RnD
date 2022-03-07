@@ -23,4 +23,4 @@ jobs:
     steps:
       - name: Print the input name to STDOUT
         run: |
-            
+           echo "GITHUB_WORKSPACE = ${{ inputs.username }}"
