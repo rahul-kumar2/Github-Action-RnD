@@ -1,0 +1,992 @@
+{
+  "name": "ContainerMain",
+  "doc": "Container event version 1.5",
+  "type": "record",
+  "namespace": "com.maersk.orderhandling.containermain",
+  "fields": [
+    {
+      "name": "shipmentNumber",
+      "doc": "The booking number for the shipment booking",
+      "type": {"type":"string", "avro.java.string":"String"}
+    },
+    {
+      "name": "shipmentIdentifier",
+      "doc": "INSTANCE_ID for the shipment. It is the primary key for the SHIPMENT table in GCSS",
+      "type": {"type":"string", "avro.java.string":"String"}
+    },
+    {
+      "name": "shipmentVersionIdentifier",
+      "doc": "INSTANCE_ID for the shipment version. It is the primary key for the SHIPMENT_VERSION table in GCSS",
+      "type": {"type":"string", "avro.java.string":"String"}
+    },
+    {
+      "name": "shipmentVersionCreatedDatetime",
+      "type": {"type":"string", "avro.java.string":"String"},
+      "logicaltype": "timestamp-millis"
+    },
+    {
+      "name": "shipmentVersionUpdatedDatetime",
+      "type": {"type":"string", "avro.java.string":"String"},
+      "logicaltype": "timestamp-millis"
+    },
+    {
+      "name": "shipmentStructureUpdateDatetime",
+      "doc": "A timestamp for when any object in the shipment structure was latest updated.",
+      "type": {"type":"string", "avro.java.string":"String"},
+      "logicaltype": "timestamp-millis"
+    },
+    {
+      "name": "brand",
+      "doc": "Identification of the carrier internal to Maersk. - The carrier owning the booking.",
+      "type": {
+        "name": "brand",
+        "type": "record",
+        "fields": [
+          {
+            "name": "brandCode",
+            "doc": "The code of the Maersk brand.",
+            "type": {"type":"string", "avro.java.string":"String"}
+          },
+          {
+            "name": "brandName",
+            "doc": "The Maersk brand name.",
+            "type": {"type":"string", "avro.java.string":"String"}
+          }
+        ]
+      }
+    },
+    {
+      "name": "partyAssociation",
+      "doc": "Information on carriers involved in the transport of the shipment.",
+      "type": ["null",
+        {
+          "name": "partyAssociation",
+          "type": "record",
+          "fields": [
+            {
+              "name": "oceanCarrier",
+              "doc": "Information on the company performing the transport at sea.",
+              "type": ["null",
+                {
+                  "name": "oceanCarrier",
+                  "type": "record",
+                  "fields": [
+                    {
+                      "name": "partyRoleTypeName",
+                      "doc": "The type of party relating to the transport.",
+                      "type": {"type":"string", "avro.java.string":"String"}
+                    },
+                    {
+                      "name": "standardCarrierAlphaCode",
+                      "doc": "The official operator code for the carrier/operator where the shipment is booked",
+                      "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                      "default": null
+                    }
+                  ]
+                }
+              ],
+              "default": null
+            }
+          ]
+        }
+      ],
+      "default": null
+    },
+    {
+      "name": "totalBookedEquipmentQuantity",
+      "doc": "The total number of containers/equipment booked.",
+      "type": ["null", "int"],
+      "default": null
+    },
+    {
+      "name": "totalBookedEquipmentFFE",
+      "doc": "The total number of containers/equipment booked equivalent to 40' containers. E.g. If 3 or 4 pieces of 20' containers are booked this attribute is set to 2.",
+      "type": ["null", "int"],
+      "default": null
+    },
+    {
+      "name": "totalBookedGrossWeight",
+      "doc": "The total booked weight of all cargo and equipment.",
+      "type": ["null","double"],
+      "default": null
+    },
+    {
+      "name": "totalBookedNetWeight",
+      "doc": "The total booked weight of all cargo and packaging but not including equipment weight.",
+      "type": ["null", "double"],
+      "default": null
+    },
+    {
+      "name": "totalBookedWeightWeightUnit",
+      "doc": "The measurement unit of the total booked cargo weight.",
+      "type": ["null",
+        {
+          "name": "totalBookedWeightWeightUnit",
+          "type": "record",
+          "fields": [
+            {
+              "name": "unitOfMeasurementCode",
+              "doc": "The measurement code - E.g.: KGS, Metric Ton, US LBS.",
+              "type": {"type":"string", "avro.java.string":"String"}
+            },
+            {
+              "name": "unitOfMeasurementName",
+              "doc": "The full name of the measurement unit.",
+              "type": {"type":"string", "avro.java.string":"String"}
+            },
+            {
+              "name": "measurementSystem",
+              "doc": "Indicator for the measurement system used.",
+              "type": {
+                "name": "measurementSystem",
+                "type": "record",
+                "fields": [
+                  {
+                    "name": "measurementSystemCode",
+                    "doc": "The abbreviated measure system name. - E.g.: S.I. (Metric), Imperial, US Customary Units, Time, Industry Standard.",
+                    "type": {"type":"string", "avro.java.string":"String"}
+                  },
+                  {
+                    "name": "measurementSystemName",
+                    "doc": "The full measure system name.",
+                    "type": {"type":"string", "avro.java.string":"String"}
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "default": null
+    },
+    {
+      "name": "totalBookedVolume",
+      "doc": "The total booked volume of all cargo.",
+      "type": ["null", "double"],
+      "default": null
+    },
+    {
+      "name": "totalBookedVolumeVolumeUnit",
+      "doc": "The measurement unit of the total booked cargo volume.",
+      "type": ["null",
+        {
+          "name": "totalBookedVolumeVolumeUnit",
+          "type": "record",
+          "fields": [
+            {
+              "name": "unitOfMeasurementCode",
+              "doc": "The measurement code - E.g.: CBM, CBF.",
+              "type": {"type":"string", "avro.java.string":"String"}
+            },
+            {
+              "name": "unitOfMeasurementName",
+              "doc": "The full name of the measurement unit.",
+              "type": {"type":"string", "avro.java.string":"String"}
+            },
+            {
+              "name": "measurementSystem",
+              "doc": "Indicator for the measurement system used.",
+              "type": "measurementSystem"
+            }
+          ]
+        }
+      ],
+      "default": null
+    },
+    {
+      "name": "shipmentEquipment",
+      "doc": "A container/piece of equipment assigned to the booking.",
+      "type": {
+        "name": "shipmentEquipment",
+        "type": "record",
+        "fields": [
+          {
+            "name": "shipmentEquipmentIdentifier",
+            "doc": "A unique identifier of the equipment assignment - (INSTANCE_ID in GCSS).",
+            "type": {"type":"string", "avro.java.string":"String"}
+          },
+          {
+            "name": "container",
+            "doc": "A description of the equipment assigned. - Only available when equipment has been matched to booking.",
+            "type": ["null",
+              {
+                "name": "container",
+                "type": "record",
+                "fields": [
+                  {
+                    "name": "isoCombinedCode",
+                    "doc": "The full ISO 6346 standardised container identification code.",
+                    "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                    "default": null
+                  },
+                  {
+                    "name": "isoOwnerCode",
+                    "doc": "The owning company's ISO 6346 code.",
+                    "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                    "default": null
+                  },
+                  {
+                    "name": "isoCategoryCode",
+                    "doc": "The equipment type ISO 6346 category code - this will be 'U'.",
+                    "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                    "default": null
+                  },
+                  {
+                    "name": "isoSerialNumber",
+                    "doc": "The ISO 6346 equipment identification code serial number part.",
+                    "type": ["null", "int"],
+                    "default": null
+                  },
+                  {
+                    "name": "isoCheckDigitNumber",
+                    "doc": "The ISO 6346 equipment identification code check digit.",
+                    "type": ["null", "int"],
+                    "default": null
+                  },
+                  {
+                    "name": "equipmentSizeType",
+                    "doc": "A classification of size and type of the container.",
+                    "type": {
+                      "name": "equipmentSizeType",
+                      "type": "record",
+                      "fields": [
+                        {
+                          "name": "sizeTypeCode",
+                          "doc": "The ISO code for the size and type.",
+                          "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                          "default": null
+                        },
+                        {
+                          "name": "description",
+                          "doc": "A description of the container size and type.",
+                          "type": {"type":"string", "avro.java.string":"String"}
+                        },
+                        {
+                          "name": "equipmentSize",
+                          "doc": "The Maersk code for container length (size).",
+                          "type": {
+                            "name": "equipmentSize",
+                            "type": "record",
+                            "fields": [
+                              {
+                                "name": "equipmentSizeCode",
+                                "doc": "The Maersk container length (size) code.",
+                                "type": {"type":"string", "avro.java.string":"String"}
+                              },
+                              {
+                                "name": "equipmentSizeName",
+                                "doc": "The Maersk container length (size).",
+                                "type": {"type":"string", "avro.java.string":"String"}
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "name": "equipmentHeight",
+                          "doc": "The Maersk code for container height.",
+                          "type": ["null",
+                            {
+                              "name": "equipmentHeight",
+                              "type": "record",
+                              "fields": [
+                                {
+                                  "name": "equipmentHeightCode",
+                                  "doc": "The Maersk code for container height.",
+                                  "type": {"type":"string", "avro.java.string":"String"}
+                                },
+                                {
+                                  "name": "equipmentHeightName",
+                                  "doc": "The Maersk container height.",
+                                  "type": {"type":"string", "avro.java.string":"String"}
+                                }
+                              ]
+                            }
+                          ],
+                          "default": null
+                        },
+                        {
+                          "name": "equipmentType",
+                          "doc": "The Maersk description of type of equipment.",
+                          "type": {
+                            "name": "equipmentType",
+                            "type": "record",
+                            "fields": [
+                              {
+                                "name": "equipmentTypeCode",
+                                "doc": "The Maersk code for equipment type.",
+                                "type": {"type":"string", "avro.java.string":"String"}
+                              },
+                              {
+                                "name": "equipmentTypeName",
+                                "doc": "The Maersk name for equipment type.",
+                                "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                                "default": null
+                              },
+                              {
+                                "name": "equipmentTypeChildEquipmentType",
+                                "doc": "Subtype description of the container type. This is upper level of the recursion level 0. It is not spelled out here to allow the Avro schema to be backward and forward compliant.",
+                                "type": ["null",
+                                  {
+                                    "name": "equipmentTypeChildEquipmentType",
+                                    "type": "record",
+                                    "fields": [
+                                      {
+                                        "name": "equipmentTypeCode",
+                                        "doc": "The Maersk code for equipment type.",
+                                        "type": {"type":"string", "avro.java.string":"String"}
+                                      },
+                                      {
+                                        "name": "equipmentTypeName",
+                                        "doc": "The Maersk name for equipment type.",
+                                        "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                                        "default": null
+                                      },
+                                      {
+                                        "name": "equipmentTypeChildEquipmentTypeL1",
+                                        "doc": "Subtype description of the container type. This is lower level of the recursion level 1.",
+                                        "type": ["null",
+                                          {
+                                            "name": "equipmentTypeChildEquipmentTypeL1",
+                                            "type": "record",
+                                            "fields": [
+                                              {
+                                                "name": "equipmentTypeCode",
+                                                "doc": "The Maersk code for equipment type.",
+                                                "type": {"type":"string", "avro.java.string":"String"}
+                                              },
+                                              {
+                                                "name": "equipmentTypeName",
+                                                "doc": "The Maersk name for equipment type.",
+                                                "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                                                "default": null
+                                              }
+                                            ]
+                                          }
+                                        ],
+                                        "default": null
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "default": null
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "alternativeCodes",
+                    "type": ["null",
+                     {
+                       "name": "alternativeCodes",
+                       "type": "record",
+                       "fields": [
+                          {
+                            "name": "ALTERNATIVE_CONTAINER_IDENTIFIER",
+                            "doc": "An alternative identification code of the equipment - usually provided from customer when container is customer owned.",
+                            "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                            "default": null
+                          }
+                        ]
+                      }
+                    ],
+                    "default": null
+                  }
+                ]
+              }
+            ],
+            "default": null
+          },
+          {
+            "name": "equipmentProfile",
+            "doc": "Specifies the type of reefer container to be used for the transport.",
+            "type": ["null",
+              {
+                "name": "equipmentProfile",
+                "type": "record",
+                "fields": [
+                  {
+                    "name": "equipmentProfileCode",
+                    "doc": "The container type code.",
+                    "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                    "default": null
+                  },
+                  {
+                    "name": "equipmentProfileName",
+                    "doc": "The Maersk container type name.",
+                    "type": {"type":"string", "avro.java.string":"String"}
+                  }
+                ]
+              }
+            ],
+            "default": null
+          },
+          {
+            "name": "cargoPackageType",
+            "doc": "The style of packaging used in the container/equipment.",
+            "type": ["null",
+              {
+                "name": "cargoPackageType",
+                "type": "record",
+                "fields": [
+                  {
+                    "name": "cargoPackageTypeCode",
+                    "doc": "A standardised code for the packing style.",
+                    "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                    "default": null
+                  },
+                  {
+                    "name": "cargoPackageTypeName",
+                    "doc": "A standardised cargo packaging style name.",
+                    "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                    "default": null
+                  },
+                  {
+                    "name": "cargoPackageTypeDescription",
+                    "doc": "A textual description of the cargo packaging style.",
+                    "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                    "default": null
+                  },
+                  {
+                    "name": "alternativeCodes",
+                    "doc": "A list of alternative cargo package type codes.",
+                    "type": ["null",
+                    {
+                      "name": "alternativeCodes",
+                      "type": "array",
+                      "items": {
+                        "name": "alternativeCode",
+                        "doc": "An alternative cargo package type code.",
+                        "type": "record",
+                        "fields":
+                          [
+                            {
+                              "name": "alternativeCode",
+                              "doc": "Alternative code type code.",
+                              "type": {"type":"string", "avro.java.string":"String"}
+                            },
+                            {
+                              "name": "unPackageType",
+                              "doc": "The United Nations standardised code for a package type. If any alternative package type code exists - this should be always be specified.",
+                              "type": ["null",
+                                {
+                                  "name": "unPackageType",
+                                  "type": "record",
+                                  "fields": [
+                                    {
+                                      "name": "unPackageTypeCode",
+                                      "doc": "The United Nations standardized cargo package type code.",
+                                      "type": {"type":"string", "avro.java.string":"String"}
+                                    },
+                                    {
+                                      "name": "unPackageTypeName",
+                                      "doc": "The name of the United Nations standardized cargo package type.",
+                                      "type": {"type":"string", "avro.java.string":"String"}
+                                    },
+                                    {
+                                      "name": "unPackageTypeDescription",
+                                      "doc": "A description of the United Nations standardized cargo package type.",
+                                      "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                                      "default": null
+                                    }
+                                  ]
+                                }
+                              ],
+                              "default": null
+                            },
+                            {
+                              "name": "imDgPackageType",
+                              "doc": "Package types specifically described for hazardous cargo.",
+                              "type": ["null",
+                                {
+                                  "name": "imDgPackageType",
+                                  "type": "record",
+                                  "fields": [
+                                    {
+                                      "name": "imDgPackageTypeCode",
+                                      "doc": "The International Maritime Dangerous Goods code (Up to 5 characters). E.g.: 11HA2, 1A1.",
+                                      "type": {"type":"string", "avro.java.string":"String"}
+                                    },
+                                    {
+                                      "name": "imDgPackageTypeName",
+                                      "doc": "The packaging type name.",
+                                      "type": {"type":"string", "avro.java.string":"String"}
+                                    },
+                                    {
+                                      "name": "imDgPackageTypeDescription",
+                                      "doc": "A text describing the package type.",
+                                      "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                                      "default": null
+                                    }
+                                  ]
+                                }
+                              ],
+                              "default": null
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "default": null
+                  }
+                ]
+              }
+            ],
+            "default": null
+          },
+          {
+            "name": "totalStuffedPackageQuantity",
+            "doc": "Total number of outer level packages stuffed in the container/equipment.",
+            "type": ["null", "int"],
+            "default": null
+          },
+          {
+            "name": "totalStuffedCustomerProductQuantity",
+            "doc": "Total number of products stuffed in the container/equipment.",
+            "type": ["null", "int"],
+            "default": null
+          },
+          {
+            "name": "totalStuffedGrossWeight",
+            "doc": "The total weight of all cargo stuffed in the container/equipment including outer level packaging.",
+            "type": ["null", "double"],
+            "default": null
+          },
+          {
+            "name": "totalStuffedNetWeight",
+            "doc": "The total net weight of all cargo stuffed in the container excluding outer level packaging.",
+            "type": ["null", "double"],
+            "default": null
+          },
+          {
+            "name": "totalStuffedWeightWeightUnit",
+            "doc": "The measurement unit of the total stuffed cargo weight in container/equipment.",
+            "type": ["null",
+              {
+                "name": "totalStuffedWeightWeightUnit",
+                "type": "record",
+                "fields": [
+                  {
+                    "name": "unitOfMeasurementCode",
+                    "doc": "The measurement code - E.g.: KGS, Metric Ton, US LBS.",
+                    "type": {"type":"string", "avro.java.string":"String"}
+                  },
+                  {
+                    "name": "unitOfMeasurementName",
+                    "doc": "The full name of the measurement unit.",
+                    "type": {"type":"string", "avro.java.string":"String"}
+                  },
+                  {
+                    "name": "measurementSystem",
+                    "doc": "Indicator for the measurement system used.",
+                    "type": "measurementSystem"
+                  }
+                ]
+              }
+            ],
+            "default": null
+          },
+          {
+            "name": "totalStuffedVolume",
+            "doc": "The total volume of cargo stuffed in the container/equipment.",
+            "type": ["null", "double"],
+            "default": null
+          },
+          {
+            "name": "totalStuffedVolumeVolumeUnit",
+            "doc": "The measurement unit of the total stuffed cargo volume in the container/equipment.",
+            "type": ["null",
+              {
+                "name": "totalStuffedVolumeVolumeUnit",
+                "type": "record",
+                "fields": [
+                  {
+                    "name": "unitOfMeasurementCode",
+                    "doc": "The measurement code - E.g.: CBM, CBF.",
+                    "type": {"type":"string", "avro.java.string":"String"}
+                  },
+                  {
+                    "name": "unitOfMeasurementName",
+                    "doc": "The full name of the measurement unit.",
+                    "type": {"type":"string", "avro.java.string":"String"}
+                  },
+                  {
+                    "name": "measurementSystem",
+                    "doc": "Indicator for the measurement system used.",
+                    "type": "measurementSystem"
+                  }
+                ]
+              }
+            ],
+            "default": null
+          },
+          {
+            "name": "isShipperOwned",
+            "doc": "Indicates if equipment is owned by the customer/shipper.",
+            "type": "boolean"
+          },
+          {
+            "name": "isSubstituted",
+            "doc": "Indicates if this equipment/container has been replaced by another equipment/container of different size and/or type.",
+            "type": "boolean"
+          },
+          {
+            "name": "isSubstitution",
+            "doc": "Indicates of this equipment/container has replaced another equipment/container but has different size and/or type properties than the equipment/container originally assigned to the shipment.",
+            "type": "boolean"
+          },
+          {
+            "name": "isReplaced",
+            "doc": "Indicates if this equipment/container has been replaced by another equipment/container of same size and type.",
+            "type": "boolean"
+          },
+          {
+            "name": "isReplacement",
+            "doc": "Indicates of this equipment/container has replaced another equipment/container of same size and type.",
+            "type": "boolean"
+          },
+          {
+            "name": "shipmentEquipmentSubstituesOrReplaces",
+            "doc": "The equipment/container being substituted/replaced by the equipment/container that this event is about.",
+            "type": ["null",
+              {
+                "name": "shipmentEquipmentSubstituesOrReplaces",
+                "type": "record",
+                "fields": [
+                  {
+                    "name": "shipmentEquipmentIdentifier",
+                    "doc": "A unique identifier of the equipment that is substituted/replaced - (INSTANCE_ID in GCSS).",
+                    "type": {"type":"string", "avro.java.string":"String"}
+                  }
+                ]
+              }
+            ],
+            "default": null
+          },
+          {
+            "name": "shipmentEquipmentCargoDistributions",
+            "doc": "Description of cargo stuffing/distribution(s) in the container.",
+            "type": ["null",
+              {
+                "name": "shipmentEquipmentCargoDistributions",
+                "type": "array",
+                "items": {
+                  "name": "shipmentEquipmentCargoDistribution",
+                  "doc": "A description of a single cargo piece stuffing/distribution in the container.",
+                  "type": "record",
+                  "fields": [
+                    {
+                      "name": "shipmentEquipmentCargoDistributionIdentifier",
+                      "doc": "A unique identifier of the stuffing entity. Taken from EQUIPMENT_STUFFING INSTANCE_ID in GCSS database.",
+                      "type": {"type":"string", "avro.java.string":"String"}
+                    },
+                    {
+                      "name": "cargoPackageType",
+                      "doc": "The style of packaging used in the container/equipment.",
+                      "type": ["null", "cargoPackageType"],
+                      "default": null
+                    },
+                    {
+                      "name": "shipmentEquipmentCargoDistributionStatus",
+                      "doc": "Indicates whether the stuffing is planned or actual.",
+                      "type": {
+                        "name": "shipmentEquipmentCargoDistributionStatus",
+                        "type": "map",
+                        "values": {
+                          "name": "shipmentEquipmentCargoDistributionStatus",
+                          "type": "enum",
+                          "symbols": ["PLANNING", "ACTUAL"]
+                        }
+                      }
+                    },
+                    {
+                      "name": "stuffedPackageQuantity",
+                      "doc": "The number of outermost cargo packages in stuffing.",
+                      "type": ["null", "long"],
+                      "default": null
+                    },
+                    {
+                      "name": "stuffedCustomerProductQuantity",
+                      "doc": "The number of customer products in stuffing.",
+                      "type": ["null", "long"],
+                      "default": null
+                    },
+                    {
+                      "name": "stuffedGrossWeight",
+                      "doc": "The weight of cargo stuffed including outer packaging materials and palettes.",
+                      "type": ["null", "double"],
+                      "default": null
+                    },
+                    {
+                      "name": "stuffedNetWeight",
+                      "doc": "The weight of cargo stuffed excluding outer packaging materials and palettes.",
+                      "type": ["null", "double"],
+                      "default": null
+                    },
+                    {
+                      "name": "stuffedWeightWeightUnit",
+                      "doc": "The measurement unit of the stuffed cargo gross weight.",
+                      "type": ["null",
+                        {
+                          "name": "weightWeightUnit",
+                          "type": "record",
+                          "fields": [
+                            {
+                              "name": "unitOfMeasurementCode",
+                              "doc": "The measurement code - E.g.: KGS, Metric Ton, US LBS.",
+                              "type": {"type":"string", "avro.java.string":"String"}
+                            },
+                            {
+                              "name": "unitOfMeasurementName",
+                              "doc": "The full name of the measurement unit.",
+                              "type": {"type":"string", "avro.java.string":"String"}
+                            },
+                            {
+                              "name": "measurementSystem",
+                              "doc": "Indicator for the measurement system used.",
+                              "type": "measurementSystem"
+                            }
+                          ]
+                        }
+                      ],
+                      "default": null
+                    },
+                    {
+                      "name": "stuffedVolume",
+                      "doc": "The volume of cargo stuffed including packaging materials and palettes.",
+                      "type": ["null", "double"],
+                      "default": null
+                    },
+                    {
+                      "name": "stuffedVolumeVolumeUnit",
+                      "doc": "The measurement unit of the gross stuffed cargo volume.",
+                      "type": ["null",
+                        {
+                          "name": "stuffedVolumeVolumeUnit",
+                          "type": "record",
+                          "fields": [
+                            {
+                              "name": "unitOfMeasurementCode",
+                              "doc": "The measurement code - E.g.: Litre, Gallon, Cubic Metres.",
+                              "type": {"type":"string", "avro.java.string":"String"}
+                            },
+                            {
+                              "name": "unitOfMeasurementName",
+                              "doc": "The full name of the measurement unit.",
+                              "type": {"type":"string", "avro.java.string":"String"}
+                            },
+                            {
+                              "name": "measurementSystem",
+                              "doc": "Indicator for the measurement system used.",
+                              "type": "measurementSystem"
+                            }
+                          ]
+                        }
+                      ],
+                      "default": null
+                    },
+                    {
+                      "name": "isOutOfGauge",
+                      "doc": "Indicate when the stuffed cargo is bigger than what can normally be stuffed in the given equipment/container size.",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    {
+                      "name": "isStuffingConfirmed",
+                      "doc": "Flag indicating whether the physical stuffing of the cargo has completed.",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    {
+                      "name": "shipmentLines",
+                      "doc": "The cargo(s) stuffed in equipment/container and transported by the shipment.",
+                      "type": {
+                        "name": "shipmentLines",
+                        "type": "array",
+                        "items": {
+                          "name": "shipmentLine",
+                          "doc": "One cargo item stuffed in equipment/container and transported by the shipment.",
+                          "type": "record",
+                          "fields": [
+                            {
+                              "name": "shipmentLineIdentifier",
+                              "doc": "Identification of the unique cargo that is stuffed in the container. The CARGO INSTANCE_ID from GCSS database.",
+                              "type": {"type":"string", "avro.java.string":"String"}
+                            },
+                            {
+                              "name": "commodityClassificationAssociations",
+                              "doc": "A list classifying the cargo in commodity types provided by customer.",
+                              "type": ["null",
+                                {
+                                  "name": "commodityClassificationAssociations",
+                                  "type": "array",
+                                  "items": {
+                                    "name": "commodityClassificationAssociation",
+                                    "type": "record",
+                                    "fields": [
+                                      {
+                                        "name": "commodityCode",
+                                        "doc": "A customer provided non-standardized commodity code.",
+                                        "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                                        "default": null
+                                      },
+                                      {
+                                        "name": "commodityName",
+                                        "doc": "A customer provided non-standardized commodity name.",
+                                        "type": ["null", {"type":"string", "avro.java.string":"String"}],
+                                        "default": null
+                                      },
+                                      {
+                                        "name": "commodityClassification",
+                                        "doc": "Standardized commodity classification information.",
+                                        "type": {
+                                          "name": "commodityClassification",
+                                          "type": "record",
+                                          "fields": [
+                                            {
+                                              "name": "commodityGroup",
+                                              "doc": "The commodity category type.",
+                                              "type": ["null", {
+                                                  "name": "commodityGroup",
+                                                  "type": "record",
+                                                  "fields": [
+                                                    {
+                                                      "name": "commodityGroupCode",
+                                                      "doc": "The identifying code for the commodity category.",
+                                                      "type": {"type":"string", "avro.java.string":"String"}
+                                                    },
+                                                    {
+                                                      "name": "commodityGroupName",
+                                                      "doc": "The full name of the commodity category.",
+                                                      "type": {"type":"string", "avro.java.string":"String"}
+                                                    }
+                                                  ]
+                                                }
+                                              ],
+                                              "default": null
+                                            },
+                                            {
+                                              "name": "commodityCode",
+                                              "doc": "The HS code for the commodity.",
+                                              "type": {"type":"string", "avro.java.string":"String"}
+                                            },
+                                            {
+                                              "name": "commodityName",
+                                              "doc": "A textual description of the commodity.",
+                                              "type": {"type":"string", "avro.java.string":"String"}
+                                            },
+                                            {
+                                              "name": "commodityClassificationChild",
+                                              "doc": "A sub category commodity description. This is the top level of the recursion level 0 not written out here to keep the Avro schema backward and forward compatible.",
+                                              "type": ["null",
+                                                {
+                                                  "name": "commodityClassificationChild",
+                                                  "type": "record",
+                                                  "fields": [
+                                                    {
+                                                      "name": "commodityGroup",
+                                                      "doc": "The commodity category type.",
+                                                      "type": ["null", "commodityGroup"],
+                                                      "default": null
+                                                    },
+                                                    {
+                                                      "name": "commodityCode",
+                                                      "doc": "The HS code for the commodity.",
+                                                      "type": {"type":"string", "avro.java.string":"String"}
+                                                    },
+                                                    {
+                                                      "name": "commodityName",
+                                                      "doc": "A textual description of the commodity.",
+                                                      "type": {"type":"string", "avro.java.string":"String"}
+                                                    },
+                                                    {
+                                                      "name": "commodityClassificationChildL1",
+                                                      "doc": "A sub category commodity description. The lower level of the recursion.",
+                                                      "type": ["null",
+                                                        {
+                                                          "name": "commodityClassificationChildL1",
+                                                          "type": "record",
+                                                          "fields": [
+                                                            {
+                                                              "name": "commodityGroup",
+                                                              "doc": "The commodity category type.",
+                                                              "type": ["null", "commodityGroup"],
+                                                              "default": null
+                                                            },
+                                                            {
+                                                              "name": "commodityCode",
+                                                              "doc": "The HS code for the commodity.",
+                                                              "type": {"type":"string", "avro.java.string":"String"}
+                                                            },
+                                                            {
+                                                              "name": "commodityName",
+                                                              "doc": "A textual description of the commodity.",
+                                                              "type": {"type":"string", "avro.java.string":"String"}
+                                                            },
+                                                            {
+                                                              "name": "commodityCodingSystem",
+                                                              "doc": "The system that defines the commodity codes: E.g.: Harmonized System, MARS Commodity codes, ...",
+                                                              "type":
+                                                                {
+                                                                  "name": "commodityCodingSystem",
+                                                                  "type": "record",
+                                                                  "fields": [
+                                                                  {
+                                                                    "name": "commodityCodingSystemCode",
+                                                                    "doc": "The uniquely identifying code for the commodity coding system.",
+                                                                    "type": {"type":"string", "avro.java.string":"String"}
+                                                                  },
+                                                                  {
+                                                                    "name": "commodityCodingSystemName",
+                                                                    "doc": "The full name of the commodity coding system.",
+                                                                    "type": {"type":"string", "avro.java.string":"String"}
+                                                                  }
+                                                                ]
+                                                              }
+                                                            }
+                                                          ]
+                                                        }
+                                                      ],
+                                                      "default": null
+                                                    },
+                                                    {
+                                                      "name": "commodityCodingSystem",
+                                                      "doc": "The system that defines the commodity codes: E.g.: Harmonized System, MARS Commodity codes, ...",
+                                                      "type": "commodityCodingSystem"
+                                                    }
+                                                  ]
+                                                }
+                                              ],
+                                              "default": null
+                                            },
+                                            {
+                                              "name": "commodityCodingSystem",
+                                              "doc": "The system that defines the commodity codes: E.g.: Harmonized System, MARS Commodity codes, ...",
+                                              "type": "commodityCodingSystem"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ],
+                              "default": null
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "default": null
+          }
+        ]
+      }
+    }
+  ]
+}
