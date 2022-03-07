@@ -1,5 +1,4 @@
 # This is a basic work flow to help you get started with Actions
-
 name: deploy
 
 on:
@@ -14,8 +13,7 @@ on:
     secrets:
       azure_cr:
         required: true
-        description: A token with access to the repository, e.g. GITHUB_TOKEN
- 
+        description: A token with access to the repository, e.g. GITHUB_TOKEN 
 
 jobs:
   deploy:
@@ -24,16 +22,5 @@ jobs:
     environment : ${{ inputs.username }}
     steps:
       - name: Print the input name to STDOUT
-        run: |
-           echo "Hello"
-           #echo  ${{secrets.GIST_AUTH_TOKEN}}
-           #echo  ${{secrets.GITHUB_TOKEN }}
-           #echo  ${{ secrets.azure_cr }}
-        
-
-      # Set the target Azure Kubernetes Service (AKS) cluster. 
-      #- uses: azure/aks-set-context@v1
-      #  with:
-      #    creds: ${{ secrets.azure_cr }}
-      #    cluster-name: rahul-cluster
-      #    resource-group: CICD
+        #run: |
+        #   echo "Hello"
