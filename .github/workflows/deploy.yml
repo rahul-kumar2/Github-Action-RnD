@@ -1,5 +1,5 @@
 # This is a basic work flow to help you get started with Actions
-name: Workflow-3
+name: Workflow-2
 
 on:
   workflow_call:
