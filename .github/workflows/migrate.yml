@@ -1,4 +1,4 @@
-name: 'Migrate database schema'
+name: 'Workflow-1'
 
 on:
   push:
