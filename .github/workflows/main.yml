@@ -116,7 +116,7 @@ jobs:
            
   test:
     needs: [build]
-    uses:  ./.github/workflows/deploy.yml 
+    #uses:  ./.github/workflows/deploy.yml 
     if: ${{ github.event.inputs.enableManualDeployement == 'false' || github.ref == 'refs/heads/main' }} 
     with:
       username: test
