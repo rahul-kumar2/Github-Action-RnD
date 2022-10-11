@@ -1,19 +1,9 @@
-# This is a basic work flow to help you get started with Actions
-name: Workflow-2
+name: 'Migrate datsssabase schema'
 
 on:
-  workflow_call:
-    inputs:
-      username:
-        description: 'A username passed from the caller workflow'
-        default: 'john-doe'
-        required: false
-        type: string
-
-    secrets:
-      azure_cr:
-        required: true
-        description: A token with access to the repository, e.g. GITHUB_TOKEN 
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:

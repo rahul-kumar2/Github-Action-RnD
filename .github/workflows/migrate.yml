@@ -1,26 +1,26 @@
-name: 'Workflow-1'
+name: 'Migrate database schema'
 
 on:
-  workflow_call:
-    inputs:
-      username:
-        description: 'A username passed from the caller workflow'
-        default: 'john-doe'
-        required: false
-        type: string
-
-    secrets:
-      azure_cr:
-        required: true
-        description: A token with access to the repository, e.g. GITHUB_TOKEN 
+  push:
+    branches:
+      - main
 
 jobs:
-  deploy:
-    name: Deploy to ${{ inputs.username }}
-    runs-on: ubuntu-latest
-    environment : ${{ inputs.username }}
+  migrate-database:
+    name: Run Flyway migrations
+    runs-on: ubuntu-20.04
+    env:
+      SUPABASE_HOST: db.YOUR_SUPABASE_DATABASE_HOST.supabase.co
+      SUPABASE_PORT: 5432
+      SUPABASE_USER: postgres
+      SUPABASE_DB: postgres
     steps:
-      - name: Print the input name to STDOUT
-        run: |
-           echo "GITHUB_WORKSPACE = ${{ inputs.username }}"
-           echo "Rahul"
+      - uses: actions/checkout@v2
+      - run: >-
+          #docker run --rm
+          #--volume ${{ github.workspace }}/migrations:/flyway/sql:ro
+          #flyway/flyway:7.12.1-alpine
+          #-url="jdbc:postgresql://${{ env.SUPABASE_HOST }}:${{ env.SUPABASE_PORT }}/${{ env.SUPABASE_DB }}?sslmode=require"
+          #-user="${{ env.SUPABASE_USER }}"
+          #-password="${{ secrets.SUPABASE_PASS }}"
+          #migrate
